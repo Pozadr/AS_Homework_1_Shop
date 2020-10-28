@@ -24,12 +24,11 @@ public class ShopPlus implements Shop {
         shoppingBasket = new ArrayList<>();
         Random random = new Random();
 
-        // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
-        shoppingBasket.add(new Product("Prod_1", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Prod_2", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Prod_3", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Prod_4", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Prod_5", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
+        // task: 5 products in shopping basket
+        for(int i = 0; i < 5; i ++) {
+            // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+            shoppingBasket.add(new Product("Prod_" + (i + 1), BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
+        }
     }
 
     @Override
