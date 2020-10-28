@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 public class ShopController {
-    private final Shop shop;
+    private Shop shop;
 
     @Autowired
     public ShopController(Shop shop) {

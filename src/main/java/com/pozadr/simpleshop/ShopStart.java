@@ -20,11 +20,11 @@ public class ShopStart implements Shop {
         Random random = new Random();
 
         // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
-        shoppingBasket.add(new Product("Carrot", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Cucumber", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Tomatoes", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Paprika", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        shoppingBasket.add(new Product("Avocado", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));    }
+        shoppingBasket.add(new Product("Prod_1", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
+        shoppingBasket.add(new Product("Prod_2", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
+        shoppingBasket.add(new Product("Prod_3", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
+        shoppingBasket.add(new Product("Prod_4", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
+        shoppingBasket.add(new Product("Prod_5", BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));    }
 
     @Override
     public BigDecimal getBasketPrice() {
@@ -35,13 +35,14 @@ public class ShopStart implements Shop {
         return sum;
     }
 
+    @Override
     public List<Product> getShoppingBasket() {
         return shoppingBasket;
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void logShopName() {
-        System.out.println("Shop START");
+        System.out.println("\nShop START");
     }
 
     @EventListener(ApplicationReadyEvent.class)
