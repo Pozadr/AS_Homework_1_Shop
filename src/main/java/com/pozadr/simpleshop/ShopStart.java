@@ -17,14 +17,7 @@ public class ShopStart implements Shop {
     private List<Product> shoppingBasket;
 
     public ShopStart() {
-        shoppingBasket = new ArrayList<>();
-        Random random = new Random();
-
-        // task: 5 products in shopping basket
-        for (int i = 0; i < 5; i++) {
-            // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
-            shoppingBasket.add(new Product("Prod_" + (i + 1), BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
-        }
+        shoppingBasket = setShoppingBasket();
     }
 
     @Override
