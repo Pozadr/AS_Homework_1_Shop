@@ -6,15 +6,13 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 @Service
 @Profile("Start")
 public class ShopStart implements Shop {
-    private List<Product> shoppingBasket;
+    private final List<Product> shoppingBasket;
 
     public ShopStart() {
         shoppingBasket = setShoppingBasket();

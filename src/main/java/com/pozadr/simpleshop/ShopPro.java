@@ -7,9 +7,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 @Service
@@ -21,7 +19,7 @@ public class ShopPro implements Shop {
     @Value("${discount.value}")
     private BigDecimal discount;
 
-    private List<Product> shoppingBasket;
+    private final List<Product> shoppingBasket;
 
 
     public ShopPro() {
