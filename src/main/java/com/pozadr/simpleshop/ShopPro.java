@@ -5,6 +5,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.Random;
 @Service
 @Profile("Pro")
 public class ShopPro implements Shop {
-    @Value("${vat.value}")
-    private BigDecimal vat;
+    @Value("${tax.value}")
+    private BigDecimal tax;
 
     @Value("${discount.value}")
     private BigDecimal discount;
@@ -28,7 +29,7 @@ public class ShopPro implements Shop {
         Random random = new Random();
 
         // task: 5 products in shopping basket
-        for(int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             shoppingBasket.add(new Product("Prod_" + (i + 1), BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
         }
@@ -42,7 +43,7 @@ public class ShopPro implements Shop {
         }
         // vat in percentage
         // sum + vat
-        sum = sum.multiply((vat.divide(BigDecimal.valueOf(100))).add(BigDecimal.valueOf(1)));
+        sum = sum.multiply((tax.divide(BigDecimal.valueOf(100))).add(BigDecimal.valueOf(1)));
 
         // discount in percentage
         // sum * discount
@@ -58,7 +59,7 @@ public class ShopPro implements Shop {
 
     @EventListener(ApplicationReadyEvent.class)
     public void logShopName() {
-        System.out.println("\nShop PRO");
+        System.out.println("\nShop PRO: price + tax(" + tax + "%)" + " - discount(" + discount + "%)");
     }
 
     @EventListener(ApplicationReadyEvent.class)

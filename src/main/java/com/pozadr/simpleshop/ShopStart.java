@@ -4,6 +4,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class ShopStart implements Shop {
         Random random = new Random();
 
         // task: 5 products in shopping basket
-        for(int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             shoppingBasket.add(new Product("Prod_" + (i + 1), BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
         }
@@ -42,7 +43,7 @@ public class ShopStart implements Shop {
 
     @EventListener(ApplicationReadyEvent.class)
     public void logShopName() {
-        System.out.println("\nShop START");
+        System.out.println("\nShop START: price");
     }
 
     @EventListener(ApplicationReadyEvent.class)

@@ -15,8 +15,8 @@ import java.util.Random;
 @Service
 @Profile("Plus")
 public class ShopPlus implements Shop {
-    @Value("${vat.value}")
-    private BigDecimal vat;
+    @Value("${tax.value}")
+    private BigDecimal tax;
     private List<Product> shoppingBasket;
 
 
@@ -25,7 +25,7 @@ public class ShopPlus implements Shop {
         Random random = new Random();
 
         // task: 5 products in shopping basket
-        for(int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             // double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
             shoppingBasket.add(new Product("Prod_" + (i + 1), BigDecimal.valueOf(50 + (300 - 50) * random.nextDouble())));
         }
@@ -37,7 +37,7 @@ public class ShopPlus implements Shop {
         for (Product product : shoppingBasket) {
             sum = sum.add(product.getPrice());
         }
-        sum = sum.multiply((vat.divide(BigDecimal.valueOf(100))).add(BigDecimal.valueOf(1)));
+        sum = sum.multiply((tax.divide(BigDecimal.valueOf(100))).add(BigDecimal.valueOf(1)));
         return sum;
     }
 
@@ -48,7 +48,7 @@ public class ShopPlus implements Shop {
 
     @EventListener(ApplicationReadyEvent.class)
     public void logShopName() {
-        System.out.println("\nShop PLUS");
+        System.out.println("\nShop PLUS: price + tax(" + tax + "%)");
     }
 
     @EventListener(ApplicationReadyEvent.class)
